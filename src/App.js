@@ -1,24 +1,42 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+
+import "./index.css";
+import SidebarList from "./components/Sidebar/SidebarList";
+import AppContent from "./components/AppContent/AppContent";
 
 function App() {
+  const [lists, setLists] = useState(null);
+  useEffect(() => {
+    axios.get("http://localhost:3000/lists?").then(({ data }) => {
+      setLists(data);
+    });
+  }, [lists]);
+  const onEditListTitle = (id, title) => {
+    const newList = lists.map((item) => {
+      if (item.id === id) {
+        item.name = title;
+      }
+      return item;
+    });
+    setLists(newList);  
+  };
+  const [activeItem, setActiveItem] = useState(null);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <div className="app__sidebar">
+        <SidebarList
+          lists={lists}
+          setLists={setLists}
+          onClickItem={(item) => {
+            setActiveItem(item);
+          }}
+          activeItem={activeItem}
+        />
+      </div>
+      {lists && activeItem && (
+        <AppContent lists={activeItem} onEditTitle={onEditListTitle} />
+      )}
     </div>
   );
 }

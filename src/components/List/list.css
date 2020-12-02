@@ -1,0 +1,40 @@
+li {
+  display: flex;
+  align-items: center;
+  padding: 10px 12px;
+  cursor: pointer;
+  margin-bottom: 5px;
+  position: relative;
+}
+li span{
+  flex: 1;
+  text-overflow: ellipsis;
+  overflow: hidden; 
+  white-space: nowrap;
+}
+li:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transition: background 0.25s ease-in-out;
+}
+li:active {
+  background: #fff;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.03);
+  border-radius: 4px;
+}
+.list__remove-btn {
+  opacity: 0;
+  transition: opacity 0.05s ease-in-out;
+  position: absolute;
+  pointer-events: unset;
+  right: 25%;
+  top: -5px;
+  z-index: 3;
+}
+li:hover .list__remove-btn {
+  opacity: 0.3;
+  transition: opacity 0.25s ease-in-out;
+}
+li:hover  .list__remove-btn:hover {
+  opacity: 0.8;
+  transition: opacity 0.25s ease-in-out;
+}

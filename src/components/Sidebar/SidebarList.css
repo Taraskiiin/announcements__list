@@ -1,0 +1,31 @@
+.sidebar__list li{
+    display: flex;
+    align-items: center;
+    padding: 10px 12px;
+    cursor: pointer;
+    margin-bottom: 5px;
+    position: relative;
+  }
+  .holder {
+    padding: 5px 30px;
+    width: 150px;
+    border: 1px solid #f5f5f5;
+    font-size: 13px;
+    color: #111111;
+    border-radius: 10px;
+  }
+  .icon{ 
+    position: absolute;
+    left: 25px;
+    top: 17px;
+    cursor: pointer;
+  }
+  .button {
+    padding: 5px 30px;
+    width: 150px;
+    border: 1px solid #f5f5f5;
+    font-size: 13px;
+    color: #111111;
+    border-radius: 10px;
+    cursor: pointer;
+  }
