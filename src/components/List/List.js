@@ -1,13 +1,13 @@
 import React, { Fragment } from "react";
 import classNames from "classnames";
+import axios from "axios";
 
-import api from "../../utils/api.js";
 import "./list.css";
 
 const List = ({ isRemovable, onRemoveList, items, onClickItem, activeItem }) => {
   const removeList = (id) => {
     if (window.confirm("You really want to remove this announcements?")) {
-      api.deleteItem(id).then(() => {
+      axios.delete("/" + id).then(() => {
         onRemoveList(id);
       });
     }

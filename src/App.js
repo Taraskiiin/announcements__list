@@ -8,7 +8,7 @@ import AppContent from "./components/AppContent/AppContent";
 function App() {
   const [lists, setLists] = useState(null);
   useEffect(() => {
-    axios.get("http://localhost:3000/lists?").then(({ data }) => {
+    axios.get("/").then(({ data }) => {
       setLists(data);
     });
   }, [lists]);
