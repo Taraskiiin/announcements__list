@@ -18,7 +18,7 @@ const Add__button = (onAdd) => {
     }
     setIsLoading(true);
     axios
-      .post("/create", {
+      .post("http://localhost:3000/", {
         name: inputValue,
       })
       .then(({ data }) => {

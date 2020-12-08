@@ -16,3 +16,4 @@ const shema = new Schema({
 });
 
 module.exports = model("AnnouncementsList", shema);
+//

@@ -6,9 +6,9 @@ import SidebarList from "./components/Sidebar/SidebarList";
 import AppContent from "./components/AppContent/AppContent";
 
 function App() {
-  const [lists, setLists] = useState(null);
+  const [lists, setLists] = useState([]);
   useEffect(() => {
-    axios.get("/").then(({ data }) => {
+    axios.get("http://localhost:3000/").then(({ data }) => {
       setLists(data);
     });
   }, [lists]);

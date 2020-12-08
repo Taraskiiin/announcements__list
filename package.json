@@ -23,7 +23,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "server": "node server",
-    "devserver":"nodemon server"
+    "devserver": "nodemon server"
   },
   "eslintConfig": {
     "extends": "react-app"

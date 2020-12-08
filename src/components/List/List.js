@@ -7,7 +7,7 @@ import "./list.css";
 const List = ({ isRemovable, onRemoveList, items, onClickItem, activeItem }) => {
   const removeList = (id) => {
     if (window.confirm("You really want to remove this announcements?")) {
-      axios.delete("/" + id).then(() => {
+      axios.delete("http://localhost:3000/" + id).then(() => {
         onRemoveList(id);
       });
     }
