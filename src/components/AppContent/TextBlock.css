@@ -1,0 +1,26 @@
+.update__text,
+.close__texteditor {
+  text-align: center;
+}
+.edit_btn:hover,
+.update__text:hover,
+.close__texteditor:hover {
+  opacity: 0.8;
+  transition: opacity 0.25s ease-in-out;
+}
+.announcements__text{
+  display: flex;
+  justify-content: flex-start;
+  position: relative;
+}
+.update__text,
+.close__texteditor {
+  opacity: 0.8;
+  cursor: pointer;
+  margin-right: 15px;
+  width: 50px;
+  height: 50px;
+  text-overflow: ellipsis;
+  position: relative;
+  z-index: 3;
+}

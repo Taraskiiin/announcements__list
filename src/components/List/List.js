@@ -1,13 +1,13 @@
 import React, { Fragment } from "react";
 import classNames from "classnames";
-import axios from "axios";
+import { deleteAnnouncements } from "../../helpers/api";
 
 import "./list.css";
 
 const List = ({ isRemovable, onRemoveList, items, onClickItem, activeItem }) => {
   const removeList = (id) => {
     if (window.confirm("You really want to remove this announcements?")) {
-      axios.delete("http://localhost:3000/" + id).then(() => {
+      deleteAnnouncements(id).then(() => {
         onRemoveList(id);
       });
     }
@@ -23,7 +23,7 @@ const List = ({ isRemovable, onRemoveList, items, onClickItem, activeItem }) => 
           <span>{item.name}</span>
           {isRemovable && (
             <button
-              onClick={() => removeList(item.id)}
+              onClick={() => removeList(item._id)}
               className="list__remove-btn"
             >
               <i className="fa fa-close icon"></i>
