@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import { getList } from "./helpers/api"
 
 import "./index.css";
 import SidebarList from "./components/Sidebar/SidebarList";
-import AppContent from "./components/AppContent/AppContent";
+import TitleBlock from "./components/AppContent/TitleBlock";
+import TextBlock from "./components/AppContent/TextBlock"
+
 
 function App() {
   const [lists, setLists] = useState([]);
   useEffect(() => {
-    axios.get("http://localhost:3000/").then(({ data }) => {
+    getList().then(({ data }) => {
       setLists(data);
     });
   }, [lists]);
@@ -35,7 +37,10 @@ function App() {
         />
       </div>
       {lists && activeItem && (
-        <AppContent lists={activeItem} onEditTitle={onEditListTitle} />
+        <div className="app__content">
+        <TitleBlock list={activeItem} onEditTitle={onEditListTitle}/>
+        <TextBlock list={activeItem}/>
+        </div>
       )}
     </div>
   );

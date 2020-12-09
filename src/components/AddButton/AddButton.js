@@ -1,6 +1,5 @@
 import React, { useState, Fragment } from "react";
-import axios from "axios";
-
+import { postNewAnnouncement } from "../../helpers/api"
 import "./AddButtonStyle.css";
 
 const Add__button = (onAdd) => {
@@ -17,14 +16,9 @@ const Add__button = (onAdd) => {
       return;
     }
     setIsLoading(true);
-    axios
-      .post("http://localhost:3000/", {
-        name: inputValue,
-      })
-      .then(({ data }) => {
+      postNewAnnouncement(inputValue).then(({ data }) => {
         const listObj = { ...data, names: [] };
         onAdd(listObj);
-       
       })
       .catch(() => {
         alert("ohhh man, we have update-list ^-^");
