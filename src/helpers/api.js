@@ -24,8 +24,8 @@ export const changeNameOfAnnouncement = (id, newName) => {
 };
 
 export const changeTextOfAnnouncement = (id, newText) => {
-    axios.put(`https://secure-wave-34428.herokuapp.com/${id}/change__post`, {
-        text: newText, 
+    return axios.put(`https://secure-wave-34428.herokuapp.com/${id}/change__post`, {
+        post: newText, 
         time: moment().format("MMM Do YY"),
     })
 };
