@@ -9,7 +9,7 @@ const Sidebar__list = ({lists, setLists, onClickItem, activeItem}) => {
     const newList = [...lists, obj];
     setLists(newList);
   };
-  const [searchQuery, setSearchQuery] = React.useState(" ");
+  const [searchTemp, setSearchTemp] = React.useState('');;
   return (
     <div sidebar__block>
       <ul className="sidebar__list">
@@ -18,8 +18,7 @@ const Sidebar__list = ({lists, setLists, onClickItem, activeItem}) => {
             <i className="fa fa-search icon"></i>
           </label>
           <input
-            onChange={(e) => setSearchQuery(e.target.value)}
-            value={searchQuery}
+            onChange={(e) => setSearchTemp(e.target.value)}
             placeholder="Search"
             id="search__holder"
             className="holder"
@@ -34,6 +33,7 @@ const Sidebar__list = ({lists, setLists, onClickItem, activeItem}) => {
             items={lists}
             onClickItem={onClickItem}
             activeItem = {activeItem}
+            searchTemp={searchTemp}
             isRemovable
           />
         ) : (
