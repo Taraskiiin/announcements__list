@@ -1,33 +1,10 @@
 import React, { useState, Fragment } from "react";
-import { postNewAnnouncement } from "../../helpers/api"
-import "./AddButtonStyle.css";
+import Addpopup from "./Addpopup";
 
 const Add__button = (onAdd) => {
   const [visiblePopup, setVisiblePopup] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [inputValue, setInputValue] = useState("");
-  const onClose = () => {
-    setVisiblePopup(!setInputValue);
-    setInputValue("");
-  };
-  const addList = () => {
-    if (!inputValue) {
-      alert("Enter name for new annoucements");
-      return;
-    }
-    setIsLoading(true);
-      postNewAnnouncement(inputValue).then(({ data }) => {
-        const listObj = { ...data, names: [] };
-        onAdd(listObj);
-      })
-      .catch(() => {
-        alert("ohhh man, we have update-list ^-^");
-      })
-      .finally(() => {
-        setIsLoading(false);
-        onClose();
-      });
-  };
   return (
     <Fragment>
       <button
@@ -36,24 +13,15 @@ const Add__button = (onAdd) => {
       >
         Create new announcements
       </button>
-      {visiblePopup && (
-        <div className="add__list__popup">
-          <button
-            onClick={() => onClose()}
-            className="add-list__popup-close-btn"
-          ><i className="fa fa-close icon"></i></button>
-          <input
-            value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
-            type="text"
-            placeholder="Enter new announcements name:"
-            className="create__holder holder"
-          ></input>
-          <button className="button add-new__btn" onClick={addList}>
-            {isLoading ? "Updating..." : "Submit"}
-          </button>
-        </div>
-      )}
+      <Addpopup
+        visiblePopup={visiblePopup}
+        setVisiblePopup={setVisiblePopup}
+        isLoading={isLoading}
+        setIsLoading={setIsLoading}
+        inputValue={inputValue}
+        setInputValue={setInputValue}
+        onAdd={onAdd}
+      />
     </Fragment>
   );
 };
