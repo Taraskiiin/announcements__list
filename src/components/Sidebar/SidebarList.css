@@ -1,3 +1,6 @@
+.sidebar__block{
+  background-color: #f4f6f8;
+}
 .sidebar__list li{
     display: flex;
     align-items: center;

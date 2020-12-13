@@ -1,9 +1,9 @@
-import React, { useState, Fragment } from "react";
+import React, { useState } from "react";
 import "./TextBlock.css";
 import EditTextBlock from "./EditTextBlock";
 const TextBlock = ({ list }) => {
   const [isInEditMode, setInEditMode] = useState(false);
-  const [inputValue, setInputValue] = useState(`${list.post}`);
+  const [inputValue, setInputValue] = useState(`${list.post}`)
   return (
     <div className="content__text-block">
       {isInEditMode ? (

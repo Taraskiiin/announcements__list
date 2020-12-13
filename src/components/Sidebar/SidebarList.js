@@ -9,16 +9,17 @@ const Sidebar__list = ({lists, setLists, onClickItem, activeItem}) => {
     const newList = [...lists, obj];
     setLists(newList);
   };
+  const [searchQuery, setSearchQuery] = React.useState(" ");
   return (
-    <div>
+    <div sidebar__block>
       <ul className="sidebar__list">
         <li>
           <label htmlFor="search__holder">
             <i className="fa fa-search icon"></i>
           </label>
           <input
-            //  onChange={(e) => setSearchQuery(e.target.value)}
-            //  value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            value={searchQuery}
             placeholder="Search"
             id="search__holder"
             className="holder"
