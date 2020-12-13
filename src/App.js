@@ -9,11 +9,6 @@ import TextBlock from "./components/AppContent/TextBlock"
 
 function App() {
   const [lists, setLists] = useState([]);
-  useEffect(() => {
-    getList().then(({ data }) => {
-      setLists(data);
-    });
-  }, [lists]);
   const onEditListTitle = (id, title) => {
     const newList = lists.map((item) => {
       if (item.id === id) {
@@ -24,6 +19,11 @@ function App() {
     setLists(newList);  
   };
   const [activeItem, setActiveItem] = useState(null);
+  useEffect(() => {
+    getList().then(({ data }) => {
+      setLists(data);
+    });
+  }, [lists, activeItem]);
   return (
     <div className="app">
       <div className="app__sidebar">

@@ -1,0 +1,21 @@
+.edit_content__popup{
+    position: relative;
+    width: 600px;
+    height: 100%;
+    padding: 20px 10px 50px 30px;
+}
+.change__content-area {
+  height: 500px;
+  width: 100%;
+  resize: vertical;
+}
+.save-change__btn,
+.edit__text-close-btn {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    left: 100%;
+}
+.save-change__btn{
+    left: calc(100% - 30px);
+}
