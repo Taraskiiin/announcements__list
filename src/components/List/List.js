@@ -4,7 +4,7 @@ import { deleteAnnouncements } from "../../helpers/api";
 
 import "./list.css";
 
-const List = ({ isRemovable, onRemoveList, items, onClickItem, activeItem }) => {
+const List = ({ isRemovable, onRemoveList, items, onClickItem, activeItem, searchTemp }) => {
   const removeList = (id) => {
     if (window.confirm("You really want to remove this announcements?")) {
       deleteAnnouncements(id).then(() => {
@@ -14,7 +14,14 @@ const List = ({ isRemovable, onRemoveList, items, onClickItem, activeItem }) => 
   };
   return (
     <Fragment>
-      {items.map((item, index) => (
+      {items.filter(item => {
+        if (searchTemp === "") {
+          return item;
+        }
+        else if (item.name.toLowerCase().includes(searchTemp.toLowerCase())) {
+          return item;
+        }
+      }).map((item, index) => (
         <li
           key={index}
           className={classNames(item.className, { active: activeItem && activeItem.id === item.id })}
